@@ -28,6 +28,7 @@ import {
 
 export function Dashboard() {
   const [selectedDate, setSelectedDate] = useState<string>('all');
+  const [activeMobileCard, setActiveMobileCard] = useState<string | null>(null);
   const [data, setData] = useState<ScanEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -224,7 +225,10 @@ export function Dashboard() {
               
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Card className="rounded-none shadow-none border-slate-200 cursor-help transition-colors hover:bg-slate-50/50">
+                  <Card 
+                    className="relative rounded-none shadow-none border-slate-200 cursor-pointer md:cursor-help transition-colors hover:bg-slate-50/50 overflow-hidden"
+                    onClick={() => setActiveMobileCard(activeMobileCard === 'criaturas' ? null : 'criaturas')}
+                  >
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
                         <CardTitle className="text-sm font-semibold text-slate-800">Criaturas del Acuario</CardTitle>
                         <Fish className="h-4 w-4 text-slate-500 stroke-[1.5]" />
@@ -233,6 +237,12 @@ export function Dashboard() {
                         <div className="text-3xl font-extrabold">{totalScans}</div>
                         <p className="text-xs text-slate-500 mt-1 font-medium">Suma filtrada (sin espacio)</p>
                     </CardContent>
+                    
+                    {activeMobileCard === 'criaturas' && (
+                      <div className="absolute inset-0 bg-slate-900/95 text-white p-4 flex items-center justify-center text-center text-xs font-medium z-10 md:hidden animate-in fade-in duration-200">
+                        Muestra el número total absoluto acumulado de dibujos que los usuarios han escaneado en el periodo filtrado actualmente.
+                      </div>
+                    )}
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px] text-center shadow-none border-slate-200">
@@ -242,7 +252,10 @@ export function Dashboard() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Card className="rounded-none shadow-none border-slate-200 cursor-help transition-colors hover:bg-slate-50/50">
+                  <Card 
+                    className="relative rounded-none shadow-none border-slate-200 cursor-pointer md:cursor-help transition-colors hover:bg-slate-50/50 overflow-hidden"
+                    onClick={() => setActiveMobileCard(activeMobileCard === 'hora' ? null : 'hora')}
+                  >
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
                         <CardTitle className="text-sm font-semibold text-slate-800">Hora Pico</CardTitle>
                         <Clock className="h-4 w-4 text-slate-500 stroke-[1.5]" />
@@ -251,6 +264,12 @@ export function Dashboard() {
                         <div className="text-3xl font-extrabold">{peakHour}</div>
                         <p className="text-xs text-slate-500 mt-1 font-medium">Con el tope de {maxHourValue} criaturas registradas</p>
                     </CardContent>
+                    
+                    {activeMobileCard === 'hora' && (
+                      <div className="absolute inset-0 bg-slate-900/95 text-white p-4 flex items-center justify-center text-center text-xs font-medium z-10 md:hidden animate-in fade-in duration-200">
+                        Identifica la hora específica del día donde se aglomeró la mayor afluencia ininterrumpida de usuarios escaneando.
+                      </div>
+                    )}
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px] text-center shadow-none border-slate-200">
@@ -260,7 +279,10 @@ export function Dashboard() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Card className="rounded-none shadow-none border-slate-200 cursor-help transition-colors hover:bg-slate-50/50">
+                  <Card 
+                    className="relative rounded-none shadow-none border-slate-200 cursor-pointer md:cursor-help transition-colors hover:bg-slate-50/50 overflow-hidden"
+                    onClick={() => setActiveMobileCard(activeMobileCard === 'ritmo' ? null : 'ritmo')}
+                  >
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
                         <CardTitle className="text-sm font-semibold text-slate-800">Ritmo de Escaneo</CardTitle>
                         <Zap className="h-4 w-4 text-slate-500 stroke-[1.5]" />
@@ -269,6 +291,12 @@ export function Dashboard() {
                         <div className="text-3xl font-extrabold">{scanRateStr}</div>
                         <p className="text-xs text-slate-500 mt-1 font-medium">Promedio entre dibujos</p>
                     </CardContent>
+                    
+                    {activeMobileCard === 'ritmo' && (
+                      <div className="absolute inset-0 bg-slate-900/95 text-white p-4 flex items-center justify-center text-center text-xs font-medium z-10 md:hidden animate-in fade-in duration-200">
+                        Tiempo promedio que pasa entre un escaneo y el siguiente.
+                      </div>
+                    )}
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px] text-center shadow-none border-slate-200">
@@ -278,7 +306,10 @@ export function Dashboard() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Card className="rounded-none shadow-none border-slate-200 cursor-help transition-colors hover:bg-slate-50/50">
+                  <Card 
+                    className="relative rounded-none shadow-none border-slate-200 cursor-pointer md:cursor-help transition-colors hover:bg-slate-50/50 overflow-hidden"
+                    onClick={() => setActiveMobileCard(activeMobileCard === 'especie' ? null : 'especie')}
+                  >
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
                         <CardTitle className="text-sm font-semibold text-slate-800">Especie Dominante</CardTitle>
                         <Activity className="h-4 w-4 text-slate-500 stroke-[1.5]" />
@@ -287,6 +318,12 @@ export function Dashboard() {
                         <div className="text-3xl font-extrabold capitalize">{topAnimal}</div>
                         <p className="text-xs text-slate-500 mt-1 font-medium">El más coloreado del evento</p>
                     </CardContent>
+                    
+                    {activeMobileCard === 'especie' && (
+                      <div className="absolute inset-0 bg-slate-900/95 text-white p-4 flex items-center justify-center text-center text-xs font-medium z-10 md:hidden animate-in fade-in duration-200">
+                        Destaca el personaje visual que lidera estadísticamente las preferencias psicológicas de diseño elegidas por los niños asistentes.
+                      </div>
+                    )}
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px] text-center shadow-none border-slate-200">
@@ -296,7 +333,10 @@ export function Dashboard() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Card className="rounded-none shadow-none border-slate-200 cursor-help transition-colors hover:bg-slate-50/50">
+                  <Card 
+                    className="relative rounded-none shadow-none border-slate-200 cursor-pointer md:cursor-help transition-colors hover:bg-slate-50/50 overflow-hidden"
+                    onClick={() => setActiveMobileCard(activeMobileCard === 'inactividad' ? null : 'inactividad')}
+                  >
                     <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
                         <CardTitle className="text-sm font-semibold text-slate-800">Mayor Inactividad</CardTitle>
                         <Coffee className="h-4 w-4 text-slate-500 stroke-[1.5]" />
@@ -305,6 +345,12 @@ export function Dashboard() {
                         <div className="text-3xl font-extrabold">{deadTimeStr}</div>
                         <p className="text-xs text-slate-500 mt-1 font-medium">Lapso: {deadTimeWindow}</p>
                     </CardContent>
+                    
+                    {activeMobileCard === 'inactividad' && (
+                      <div className="absolute inset-0 bg-slate-900/95 text-white p-4 flex items-center justify-center text-center text-xs font-medium z-10 md:hidden animate-in fade-in duration-200">
+                        Rastrea la franja horaria ininterrumpida más prolongada donde el sistema operativo no recibió ningún escaneo (Tiempo muerto).
+                      </div>
+                    )}
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px] text-center shadow-none border-slate-200">
