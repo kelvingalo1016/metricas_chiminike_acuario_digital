@@ -128,3 +128,20 @@
     @apply font-sans;
     }
 }
+
+@keyframes pro-vibrate {
+  0% { transform: translate(0); }
+  2% { transform: translate(-1.5px, 0.5px) rotate(-1deg); }
+  4% { transform: translate(1px, -0.5px) rotate(1deg); }
+  6% { transform: translate(-0.5px, 1px) rotate(-1deg); }
+  8% { transform: translate(1px, -1px) rotate(1deg); }
+  10% { transform: translate(0); }
+  100% { transform: translate(0); }
+}
+
+.animate-pro-vibrate {
+  animation: pro-vibrate 2s ease-in-out infinite;
+}
+.animate-pro-vibrate:hover {
+  animation: none !important;
+}
