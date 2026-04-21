@@ -154,8 +154,8 @@ export function Dashboard() {
       
       {/* Semantic Brand Header */}
       <header className="w-full relative">
-        <div className="w-full flex items-center justify-between py-4 px-8 lg:px-12 mt-0">
-          <div style={{ fontFamily: '"Urbanist", sans-serif' }} className="text-xl tracking-tight select-none text-slate-900">
+        <div className="w-full flex items-center justify-between py-4 px-4 sm:px-8 lg:px-12">
+          <div style={{ fontFamily: '"Urbanist", sans-serif' }} className="text-xl tracking-tight select-none text-slate-900 shrink-0">
             <span className="font-semibold">Galo</span>
             <span className="font-light">Imagineering</span>
           </div>
@@ -167,13 +167,13 @@ export function Dashboard() {
       </header>
 
       <main className="w-full max-w-5xl mx-auto pb-10 print:pb-0 space-y-10 px-4">
-        <div className="flex flex-col items-center justify-center text-center space-y-4 relative">
+        <div className="flex flex-col items-center justify-center text-center space-y-6 md:space-y-4 relative">
           
-        <div className="absolute right-0 top-0 print:hidden">
+        <div className="w-full md:w-auto flex justify-center md:absolute md:right-0 md:top-0 print:hidden mb-2 md:mb-0">
           <Button 
             variant="outline" 
             size="sm" 
-            className="shadow-sm bg-slate-900 border border-slate-900 text-white hover:bg-white hover:text-slate-900 hover:border-slate-900 animate-pro-vibrate hover:animate-none transition-colors duration-300" 
+            className="w-full sm:w-auto shadow-sm bg-slate-900 border border-slate-900 text-white hover:bg-white hover:text-slate-900 hover:border-slate-900 animate-pro-vibrate hover:animate-none transition-colors duration-300" 
             onClick={() => window.print()}
           >
             <Download className="h-4 w-4 mr-2" /> PDF Ejecutivo
@@ -181,7 +181,7 @@ export function Dashboard() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-1 print:hidden">Panel Analítico</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-1 print:hidden mt-2 md:mt-0">Panel Analítico</h1>
           <p className="text-slate-500 font-medium tracking-tight print:text-2xl print:font-bold print:text-slate-900 print:mb-1">
             Métricas de interacción del Acuario Mágico
           </p>
